@@ -1,15 +1,18 @@
 
 public class Destroyer extends Ship {
-	
-	public Destroyer() {
-		super(3);
+
+	public Destroyer(Location location) {
+		super(location);
 	}
 	
 	@Override
-	/***
-	 * Draw sunken Battleship
-	 */
-	public void drawSunkenShip() {
-		System.out.println("Destroyer has been sunk");
+	public String draw(Location location) {
+		if(isHit()) {
+			return "D ";
+		}
+		else {
+			return ". ";
+		}
 	}
+
 }

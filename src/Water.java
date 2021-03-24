@@ -1,16 +1,15 @@
 
-public class Battleship extends Ship {
+public class Water extends GamePiece {
 
-	public Battleship(Location location) {
+	public Water(Location location) {
 		super(location);
 	}
 	
 	@Override
 	public String draw(Location location) {
 		if(isHit()) {
-			return "B ";
-		}
-		else {
+			return "W ";
+		} else {
 			return ". ";
 		}
 	}

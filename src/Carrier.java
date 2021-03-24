@@ -1,15 +1,18 @@
 
 public class Carrier extends Ship {
-	
-	public Carrier() {
-		super(5);
+
+	public Carrier(Location location) {
+		super(location);
 	}
 	
 	@Override
-	/***
-	 * Draw sunken carrier
-	 */
-	public void drawSunkenShip() {
-		System.out.println("Carrier has been sunk");
+	public String draw(Location location) {
+		if(isHit()) {
+			return "C ";
+		}
+		else {
+			return ". ";
+		}
 	}
+
 }

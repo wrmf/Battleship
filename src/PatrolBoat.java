@@ -1,15 +1,18 @@
 
 public class PatrolBoat extends Ship {
-	
-	public PatrolBoat() {
-		super(2);
+
+	public PatrolBoat(Location location) {
+		super(location);
 	}
 	
 	@Override
-	/***
-	 * Draw sunken Submarine
-	 */
-	public void drawSunkenShip() {
-		System.out.println("Patrol Boat has been sunk");
+	public String draw(Location location) {
+		if(isHit()) {
+			return "P ";
+		}
+		else {
+			return ". ";
+		}
 	}
+
 }

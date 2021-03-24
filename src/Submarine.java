@@ -1,15 +1,18 @@
 
 public class Submarine extends Ship {
-	
-	public Submarine() {
-		super(3);
+
+	public Submarine(Location location) {
+		super(location);
 	}
 	
 	@Override
-	/***
-	 * Draw sunken Submarine
-	 */
-	public void drawSunkenShip() {
-		System.out.println("Submarine has been sunk");
+	public String draw(Location location) {
+		if(isHit()) {
+			return "U ";
+		}
+		else {
+			return ". ";
+		}
 	}
+
 }

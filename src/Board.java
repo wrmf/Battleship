@@ -3,7 +3,7 @@
  * @author William McGovern-Fagg
  *
  */
-public class Board extends Game {
+public abstract class Board extends Game {
 	protected GamePiece[][] board;
 	
 	public Board() {
