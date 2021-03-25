@@ -5,4 +5,6 @@ public abstract class Player {
 	}
 	
 	public abstract Location getNextMove(Board board);
+	
+	public abstract Board placeShips(Board board);
 }

@@ -5,8 +5,12 @@ public class Carrier extends Ship {
 		super(location);
 	}
 	
+	public Carrier(int x, int y) {
+		super(x, y);
+	}
+	
 	@Override
-	public String draw(Location location) {
+	public String draw() {
 		if(isHit()) {
 			return "C ";
 		}

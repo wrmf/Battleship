@@ -14,7 +14,9 @@ public abstract class Game {
 	}
 	
 	public void play(Player player) {
-		
+		while(!isGameOver()) {
+			
+		}
 	}
 	
 	public boolean isGameOver() {

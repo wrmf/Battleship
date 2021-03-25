@@ -8,9 +8,14 @@ public abstract class GamePiece extends Board {
 		isHit = false;
 	}
 	
-	public abstract String draw(Location location);
+	public GamePiece(int x, int y) {
+		this.coordinant = new Location(x, y);
+		isHit = false;
+	}
 	
-	public void takeHit(Location location) {
+	public abstract String draw();
+	
+	public void takeHit() {
 		isHit = true;
 	}
 	

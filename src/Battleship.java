@@ -5,8 +5,12 @@ public class Battleship extends Ship {
 		super(location);
 	}
 	
+	public Battleship(int x, int y) {
+		super(x, y);
+	}
+	
 	@Override
-	public String draw(Location location) {
+	public String draw() {
 		if(isHit()) {
 			return "B ";
 		}

@@ -5,8 +5,12 @@ public class PatrolBoat extends Ship {
 		super(location);
 	}
 	
+	public PatrolBoat(int x, int y) {
+		super(x, y);
+	}
+	
 	@Override
-	public String draw(Location location) {
+	public String draw() {
 		if(isHit()) {
 			return "P ";
 		}

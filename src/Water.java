@@ -6,7 +6,7 @@ public class Water extends GamePiece {
 	}
 	
 	@Override
-	public String draw(Location location) {
+	public String draw() {
 		if(isHit()) {
 			return "W ";
 		} else {
