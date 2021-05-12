@@ -11,6 +11,11 @@ public abstract class Game {
 		this.player2 = player2;
 	}
 	
+	public void setPlayers(Player player1, Player player2) {
+		this.player1 = player1;
+		this.player2 = player2;
+	}
+	
 	public void play() {
 		board1 = player1.placeShips(board1);
 		board2 = player2.placeShips(board2);
@@ -22,9 +27,18 @@ public abstract class Game {
 	
 	public boolean isGameOver() {
 		if(board1.areAllShipsSunk() || board2.areAllShipsSunk()) {
+			printWinner();
 			return true;
 		}
 		
 		return false;
+	}
+	
+	public void printWinner() {
+		if(board1.areAllShipsSunk()) {
+			System.out.println("Player 1 won");
+		} else {
+			System.out.println("Player 2 won");
+		}
 	}
 }
