@@ -11,5 +11,15 @@ public abstract class Ship extends GamePiece {
 	
 	@Override
 	public abstract String draw();
+	
+	@Override
+	public boolean isWater() {
+		return false;
+	}
+	
+	@Override
+	public boolean isShip() {
+		return true;
+	}
 
 }

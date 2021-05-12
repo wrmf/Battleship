@@ -13,5 +13,15 @@ public class Water extends GamePiece {
 			return ". ";
 		}
 	}
+	
+	@Override
+	public boolean isWater() {
+		return true;
+	}
+	
+	@Override
+	public boolean isShip() {
+		return false;
+	}
 
 }
