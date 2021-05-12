@@ -7,8 +7,12 @@ import java.util.Random;
 
 public class RandomPlayer extends Player {
 	
-	private static int maxTries = 10;
+	private int maxTries = 50;
 
+	/***
+	 * Get location to move next
+	 * @param board to see if chosen move is valid
+	 */
 	@Override
 	public Location getNextMove(Board board) {
 		Location location = new Location();
@@ -24,6 +28,10 @@ public class RandomPlayer extends Player {
 		return location;
 	}
 	
+	/***
+	 * Place all ships on board
+	 * @param board to place ships on
+	 */
 	@Override
 	public Board placeShips(Board board) {
 		Location location = new Location();
@@ -37,14 +45,25 @@ public class RandomPlayer extends Player {
 			}
 		}
 		
-		boolean direction = random.nextBoolean(); //True for vertical, false for horizontal
-		
-		
+		board = placeShip(board, random, 5, random.nextBoolean(), location);
+		board = placeShip(board, random, 4, random.nextBoolean(), location);
+		board = placeShip(board, random, 3, random.nextBoolean(), location);
+		board = placeShip(board, random, 3, random.nextBoolean(), location);
+		board = placeShip(board, random, 2, random.nextBoolean(), location);
 		
 		return board;
 		
 	}
 	
+	/***
+	 * Place a ship on board with certain length
+	 * @param board board to change
+	 * @param random random used to determine location
+	 * @param length length of ship
+	 * @param direction vertical or horizontal
+	 * @param location location variable so I don't have to new it every time
+	 * @return
+	 */
 	public Board placeShip(Board board, Random random, int length, boolean direction, Location location) {
 		boolean isPlaced = false;
 		
@@ -113,6 +132,22 @@ public class RandomPlayer extends Player {
 		}
 		
 		return board;
+	}
+	
+	/***
+	 * Set max tries for getting next move
+	 * @param maxTries max times to try for a valid move before erroring
+	 */
+	public void setMaxTries(int maxTries) {
+		this.maxTries = maxTries;
+	}
+	
+	/***
+	 * Get max number of tries for getting next move
+	 * @return maxTries
+	 */
+	public int getMaxTries() {
+		return maxTries;
 	}
 
 }

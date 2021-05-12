@@ -33,7 +33,8 @@ public abstract class GamePiece extends Board {
 	 * Check if there is water
 	 * @return true if water, false if not
 	 */
-	public abstract boolean isWater() ;
+	public abstract boolean isWater();
+	
 	
 	/***
 	 * Check if there is a ship at location

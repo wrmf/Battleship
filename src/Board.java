@@ -79,9 +79,43 @@ public abstract class Board {
 		return size;
 	}
 
-	public boolean isWater() {
-		// TODO Auto-generated method stub
-		return false;
+	/***
+	 * Check if a certain game piece is water
+	 * @return true if water, false if not
+	 */
+	public abstract boolean isWater();
+	
+	/***
+	 * Check if Location is water
+	 * @param location location to check
+	 * @return true if water, false if not
+	 */
+	public boolean isWater(Location location) {
+		return board[location.getRow()][location.getCol()].isWater();
+	}
+	
+	/***
+	 * Check if a location x, y is water
+	 * @param x X coord
+	 * @param y Y coord
+	 * @return true if water, false if not
+	 */
+	public boolean isWater(int x, int y) {
+		return board[x][y].isWater();
+	}
+	
+	/***
+	 * Fire shot
+	 * @param location
+	 * @return
+	 */
+	public boolean fire(Location location) {
+		board[location.getRow()][location.getCol()].takeHit(); 
+		if(board[location.getRow()][location.getCol()].isHit()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 }
