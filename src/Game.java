@@ -1,5 +1,5 @@
 
-public abstract class Game {
+public class Game {
 	private Player player1;
 	private Player player2;
 	protected Board board1;
@@ -17,8 +17,8 @@ public abstract class Game {
 	}
 	
 	public void play() {
-		board1 = player1.placeShips(board1);
-		board2 = player2.placeShips(board2);
+		board1 = player1.placeShips(new Board());
+		board2 = player2.placeShips(new Board());
 		while(!isGameOver()) {
 			board1.fire(player1.getNextMove(board1));
 			board2.fire(player2.getNextMove(board1));

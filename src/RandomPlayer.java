@@ -46,10 +46,15 @@ public class RandomPlayer extends Player {
 		}
 		
 		board = placeShip(board, random, 5, random.nextBoolean(), location);
+		System.out.println("A");
 		board = placeShip(board, random, 4, random.nextBoolean(), location);
+		System.out.println("A");
 		board = placeShip(board, random, 3, random.nextBoolean(), location);
+		System.out.println("A");
 		board = placeShip(board, random, 3, random.nextBoolean(), location);
+		System.out.println("A");
 		board = placeShip(board, random, 2, random.nextBoolean(), location);
+		System.out.println("A");
 		
 		return board;
 		

@@ -3,7 +3,7 @@
  * @author William McGovern-Fagg
  *
  */
-public abstract class Board {
+public class Board {
 	public GamePiece[][] board;
 	private int size = 8;
 	
@@ -78,12 +78,6 @@ public abstract class Board {
 	public int getNumCols() {
 		return size;
 	}
-
-	/***
-	 * Check if a certain game piece is water
-	 * @return true if water, false if not
-	 */
-	public abstract boolean isWater();
 	
 	/***
 	 * Check if Location is water
