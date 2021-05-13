@@ -8,3 +8,4 @@ battleship_logs1.txt
 .project
 .settings/org.eclipse.jdt.core.prefs
 bin/Game$1.class
+.metadata
