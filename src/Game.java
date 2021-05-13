@@ -3,26 +3,56 @@
  * @author William McGovern-Fagg
  */
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.time.LocalDate;
 
 public class Game {
 	private Player player1;
 	private Player player2;
 	protected Board board1;
 	protected Board board2;
-	
+	private JMenuItem quitButton, helpButton, sourceButton, newFileButton, saveButton, saveAsButton, openButton;
+	private JFrame frame = new JFrame();
+	private JMenu fileMenu, helpMenu;
+	private JMenuBar menuBar;
 	
 	public Game(Player player1, Player player2) {
 		this.player1 = player1;
 		this.player2 = player2;
+		createGUI();
 	}
 	
 	public void setPlayers(Player player1, Player player2) {
 		this.player1 = player1;
 		this.player2 = player2;
+		createGUI();
+	}
+	
+	private void createGUI() {
+		sourceButton = new JMenuItem("Source");
+		quitButton = new JMenuItem("Exit");
+		helpButton = new JMenuItem("Info");
+		fileMenu = new JMenu("File");
+		helpMenu = new JMenu("Help");
+		menuBar = new JMenuBar();
+		
+		frame.setTitle("Battleship");
+		frame.setSize(1000, 600);
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+		
+		fileMenu.add(quitButton);
+		helpMenu.add(helpButton);
+		helpMenu.add(sourceButton);
+		
+		frame.setJMenuBar(menuBar);
+        frame.setVisible(true);
+		
 	}
 	
 	public void play() {
