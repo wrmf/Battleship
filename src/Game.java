@@ -49,9 +49,17 @@ public class Game {
 		fileMenu.add(quitButton);
 		helpMenu.add(helpButton);
 		helpMenu.add(sourceButton);
+		menuBar.add(fileMenu);
+		menuBar.add(helpMenu);
 		
 		frame.setJMenuBar(menuBar);
         frame.setVisible(true);
+        
+        quitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(1);
+			}	
+		});	
 		
 	}
 	

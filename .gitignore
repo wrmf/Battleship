@@ -1,0 +1,10 @@
+
+battleship_logs2.txt
+battleship_logs1.txt
+*.txt
+.DS_Store
+.classpath
+.gitattributes
+.project
+.settings/org.eclipse.jdt.core.prefs
+bin/Game$1.class
