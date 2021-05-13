@@ -3,6 +3,11 @@
  * @author William McGovern-Fagg
  *
  */
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Board {
 	public GamePiece[][] board;
 	private int size = 8;
@@ -80,6 +85,14 @@ public class Board {
 	}
 	
 	/***
+	 * Get size of square board
+	 * @return size
+	 */
+	public int getSize() {
+		return size;
+	}
+	
+	/***
 	 * Check if Location is water
 	 * @param location location to check
 	 * @return true if water, false if not
@@ -104,11 +117,43 @@ public class Board {
 	 * @return
 	 */
 	public boolean fire(Location location) {
-		board[location.getRow()][location.getCol()].takeHit(); 
+		board[location.getRow()][location.getCol()].takeHit(); //Fire at location
+		//Check if it was a hit or miss for return
 		if(board[location.getRow()][location.getCol()].isHit()) {
 			return true;
 		} else {
 			return false;
+		}
+	}
+	
+	/***
+	 * Print board to file
+	 * @param fileName file to print to
+	 * @throws IOException
+	 */
+	public void toFile(String fileName) {
+		FileWriter fileWriter;
+		try {
+			fileWriter = new FileWriter(fileName, true);
+			PrintWriter printWriter = new PrintWriter(fileWriter); //create new printWriter
+			
+		    
+		    //Print board
+		    for(int counterRows = 0; counterRows < board.length; counterRows++) {
+		    	for(int counterCols = 0; counterCols < board.length; counterCols++) {
+		    		printWriter.print(board[counterRows][counterCols].draw()+" ");
+		    	}
+		    	printWriter.println(); //Line break
+		    }
+		    
+		    printWriter.println(); //Extra line at end
+		    
+		    printWriter.close();
+		    fileWriter.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	

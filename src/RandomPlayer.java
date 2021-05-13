@@ -46,15 +46,10 @@ public class RandomPlayer extends Player {
 		}
 		
 		board = placeShip(board, random, 5, random.nextBoolean(), location);
-		System.out.println("A");
 		board = placeShip(board, random, 4, random.nextBoolean(), location);
-		System.out.println("A");
 		board = placeShip(board, random, 3, random.nextBoolean(), location);
-		System.out.println("A");
 		board = placeShip(board, random, 3, random.nextBoolean(), location);
-		System.out.println("A");
 		board = placeShip(board, random, 2, random.nextBoolean(), location);
-		System.out.println("A");
 		
 		return board;
 		
@@ -72,66 +67,93 @@ public class RandomPlayer extends Player {
 	public Board placeShip(Board board, Random random, int length, boolean direction, Location location) {
 		boolean isPlaced = false;
 		
+		//Edge cases
+		if(length > 5) {
+			length = 5;
+		} else if(length < 2) {
+			length = 2;
+		}
+		
 		if(direction) {
-			if(length >= 5) {
-				location.setRow(random.nextInt(3));
-			} else if(length == 4) {
-				location.setRow(random.nextInt(4));
-			} else if(length == 3) {
-				location.setRow(random.nextInt(5));
-			} else if(length <= 2) {
-				location.setRow(random.nextInt(6));
-			}
-			
-			
+			location.setRow(random.nextInt(board.getSize()-length));
 			location.setCol(random.nextInt(7));
 			while(!isPlaced) {
 				if(board.isWater(location) && board.isWater(location.getRow()+1, location.getCol()) 
-						&& board.isWater(location.getRow()+length-1, location.getCol())) {
+						&& board.isWater(location.getRow()+2, location.getCol())) {
 					for(int i = 0; i < length; i ++) {
-						if(length >= 5) {
+						if(length == 5) {
 							board.board[i][location.getCol()] = new Carrier(i, location.getCol());
 						} else if(length == 4) {
 							board.board[i][location.getCol()] = new Battleship(i, location.getCol());
 						} else if(length == 3) {
 							board.board[i][location.getCol()] = new Submarine(i, location.getCol());
-						} else if(length <= 2) {
+						} else if(length == 2) {
 							board.board[i][location.getCol()] = new PatrolBoat(i, location.getCol());
 						}
 					}
 					
 					isPlaced = true;
+				} else { //Reset location
+					location.setRow(random.nextInt(board.getSize()-length));
+					location.setCol(random.nextInt(7));
 				}
 			}
 		} else {
-			if(length >= 5) {
-				location.setCol(random.nextInt(3));
-			} else if(length == 4) {
-				location.setCol(random.nextInt(4));
-			} else if(length == 3) {
-				location.setCol(random.nextInt(5));
-			} else if(length <= 2) {
-				location.setCol(random.nextInt(6));
-			}
+			location.setCol(random.nextInt(board.getSize()-length));
 			
 			
 			location.setRow(random.nextInt(7));
 			while(!isPlaced) {
-				if(board.isWater(location) && board.isWater(location.getRow(), location.getCol()+1) 
-						&& board.isWater(location.getRow(), location.getCol()+length-1)) {
+				
+				if(length == 5) {
+					if(board.isWater(location) && board.isWater(location.getRow(), (location.getCol()+1)) 
+							&& board.isWater(location.getRow(), location.getCol()+length+2) && 
+							board.isWater(location.getRow(), location.getCol()+length+3) && 
+							board.isWater(location.getRow(), location.getCol()+length+4)) {
+						for(int i = 0; i < length; i ++) {
+							board.board[location.getRow()][i] = new Carrier(i, location.getCol());
+						}
+					}
+				} else if(length == 4) {
+					if(board.isWater(location) && board.isWater(location.getRow(), (location.getCol()+1)) 
+							&& board.isWater(location.getRow(), location.getCol()+length+2) && 
+							board.isWater(location.getRow(), location.getCol()+length+3)) {
+						for(int i = 0; i < length; i ++) {
+							board.board[location.getRow()][i] = new Battleship(location.getRow(), i);
+						}
+					}
+				} else if(length == 3) {
+					if(board.isWater(location) && board.isWater(location.getRow(), (location.getCol()+1)) 
+							&& board.isWater(location.getRow(), location.getCol()+length+2)) {
+						for(int i = 0; i < length; i ++) {
+							board.board[location.getRow()][i] = new Submarine(location.getRow(), i);
+						}
+					}
+				} else if(length == 2) {
+					if(board.isWater(location) && board.isWater(location.getRow(), (location.getCol()+1))) {
+						for(int i = 0; i < length; i ++) {
+							board.board[location.getRow()][i] = new PatrolBoat(location.getRow(), i);
+						}
+					}
+				}
+				
+				
 					for(int i = 0; i < length; i ++) {
-						if(length >= 5) {
+						if(length == 5) {
 							board.board[location.getRow()][i] = new Carrier(i, location.getCol());
 						} else if(length == 4) {
 							board.board[location.getRow()][i] = new Battleship(location.getRow(), i);
 						} else if(length == 3) {
 							board.board[location.getRow()][i] = new Submarine(location.getRow(), i);
-						} else if(length <= 2) {
+						} else if(length == 2) {
 							board.board[location.getRow()][i] = new PatrolBoat(location.getRow(), i);
 						}
 					}
 					
 					isPlaced = true;
+				} else { //Reset location
+					location.setCol(random.nextInt(board.getSize()-length));
+					location.setRow(random.nextInt(7));
 				}
 			}
 		}
