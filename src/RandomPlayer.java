@@ -14,8 +14,8 @@ public class RandomPlayer extends Player {
 	 * @param board to see if chosen move is valid
 	 */
 	@Override
-	public Location getNextMove(Board board) {
-		Location location = new Location();
+	public Location getNextMove(Board board, Location location) {
+		location = new Location();
 		Random random = new Random();
 		for(int i = 0; i < maxTries; i ++) {
 			location.setRow(random.nextInt(board.getNumRows()));
